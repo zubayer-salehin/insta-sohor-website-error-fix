@@ -1,6 +1,7 @@
 const likedPostsId = [];
 const reportedPostsId = [];
 
+
 const getLikedPosts = () => {
     return posts.filter((post) => likedPostsId.includes(post.id));
 };
@@ -9,14 +10,14 @@ const getReportedPosts = () => {
     return posts.filter((post) => reportedPostsId.includes(post.id));
 };
 
-const isLiked = (id) => {
-    return likedPostsId?.length && !!likedPostsId.includes(id);
-};
-
 const addToLiked = (id) => {
   if (likedPostsId.indexOf(id) === -1) {
-    likedPostsId.push(id); 
+    likedPostsId.push(id);
   }
+};
+
+const isLiked = (id) => {
+  return likedPostsId?.length && likedPostsId.includes(id);
 };
 
 const reportPost = (id) => {
@@ -34,6 +35,7 @@ const switchTab = (id) => {
         document.getElementById( "posts" ).style.display = "grid";
         document.getElementById( "liked" ).style.display = "none";
         document.getElementById( "reported" ).style.display = "none";
+        showPosts(posts);
     } else if (id === "liked") {
         document.getElementById( "liked" ).style.display = "block";
         document.getElementById( "posts" ).style.display = "none";
@@ -141,10 +143,9 @@ const showPosts = (posts) => {
 };
 
 const displayLikedPosts = () => {
-  const getlikedPosts = document.getElementById( "likedPosts" );
-  getlikedPosts.textContent = "";
+  const likedPostsContainer = document.getElementById( "likedPosts" );
+  likedPostsContainer.textContent = "";
   const likedPosts = getLikedPosts();
-  console.log(likedPosts);
   likedPosts.forEach((post) => {
       const div = createPost(post);
       document.getElementById( "likedPosts" ).appendChild(div);
@@ -152,8 +153,8 @@ const displayLikedPosts = () => {
 };
 
 const displayReportedPosts = () => {
-  const getreportedPosts = document.getElementById( "reportedPosts" );
-  getreportedPosts.textContent = "";
+  const reportedPostsContainer = document.getElementById( "reportedPosts" );
+  reportedPostsContainer.textContent = "";
     const reportedPosts = getReportedPosts();
     reportedPosts.forEach((post) => {
         const div = createPost(post);
