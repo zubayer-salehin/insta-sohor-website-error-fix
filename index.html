@@ -67,14 +67,16 @@
             </nav>
         </header>
         <main class="main container mx-auto p-3">
-            <div id="posts">
+            <div id="posts" onclick="switchTab('posts')">
             </div>
-            <div id="liked">
+            <div id="liked" onclick="switchTab('liked')">
                 <h1>Liked posts</h1>
+                <div id="likedPosts"></div>
             </div>
 
-            <div id="reported">
+            <div id="reported" onclick="switchTab('reported')">
                 <h1>Reported posts</h1>
+                <div id="reportedPosts"></div>
             </div>
         </main>
         <footer></footer>
